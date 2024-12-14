@@ -2,7 +2,7 @@ class Grid
   attr_reader :grid, :player1, :player2
  
   def initialize
-     @grid = Array.new(3) {Array.new(3, ' ')}
+     @grid = Array.new(3) {Array.new(3)}
          @player1 = Player.new('Player1')
          @player2 = Player.new('Player2')
   end
@@ -56,5 +56,11 @@ class Grid
 
   def player2_match?
     row_match?('O') || col_match?('O') || diagonal_match?('O')
+  end
+
+  def empty_space?
+    grid.any? do |row|
+      row.any? {|entry| entry.nil?}
+    end
   end
 end

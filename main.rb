@@ -13,6 +13,11 @@ while true
     break
   end
 
+  if !grid.empty_space?
+    puts "Game Tie!!"
+    break
+  end
+
   grid.player2.get_entry
   grid.add_player2_entry
   grid.display
