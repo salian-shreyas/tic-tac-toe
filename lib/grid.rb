@@ -21,12 +21,16 @@ class Grid
     puts "#{name} won the game!!"
   end
 
-  def add_player1_entry
-    grid[player1.entries.last.first][player1.entries.last.last] = 'X' unless player1.entries.last.nil?
+  def add_player1_entries
+    row = player1.entries[:row]
+    col = player1.entries[:col]
+    grid[row][col] = 'X' 
   end
 
-  def add_player2_entry
-    grid[player2.entries.last.first][player2.entries.last.last] = 'O' unless player2.entries.last.nil?
+  def add_player2_entries
+    row = player2.entries[:row]
+    col = player2.entries[:col]
+    grid[row][col] = 'O' 
   end
 
   def row_match?(symbol)
@@ -62,5 +66,9 @@ class Grid
     grid.any? do |row|
       row.any? {|entry| entry.nil?}
     end
+  end
+
+  def invalid_entries?(entries)
+    !entries[:row].between?(0, 2) || !entries[:col].between?(0, 2) || grid[entries[:row]][entries[:col]]
   end
 end

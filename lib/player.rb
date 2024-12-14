@@ -2,13 +2,15 @@ class Player
 	attr_reader :entries, :name
 
 	def initialize(name)
-		@entries = []
-		@name = name
+		self.name = name
+		self.entries = {}
 	end
 
-	def get_entry
+	def get_entries
 		puts "#{name} enter your position: "
-		entries.push(gets.chomp.split(' ').map {|entry| entry.to_i})
+		entries = gets.chomp.split(' ')
+		self.entries[:row] = entries.first.to_i - 1
+		self.entries[:col] = entries.last.to_i - 1
 	end
 
 	private
