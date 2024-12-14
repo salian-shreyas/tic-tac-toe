@@ -10,7 +10,7 @@ class Grid
   def display
     grid.each_with_index do |row, i|
       row.each_with_index do |space, j| 
-        print " #{space} "
+        print space.nil? ? "   " : " #{space} "
         (j == 2) ? print("\n") : print("|")
       end
       print("---+---+--\n") unless i == 2
